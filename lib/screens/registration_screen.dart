@@ -1,8 +1,9 @@
+import 'package:flash_chat/constants.dart';
 import 'package:flutter/material.dart';
 
 class RegistrationScreen extends StatefulWidget {
 
-  static String id = 'registration_screen';
+  static const String id = 'registration_screen';
   @override
   _RegistrationScreenState createState() => _RegistrationScreenState();
 }
@@ -11,7 +12,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: kBackgroundColor,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
