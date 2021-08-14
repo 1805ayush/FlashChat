@@ -25,11 +25,24 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
       upperBound: 1
     );
 
-    animation= CurvedAnimation(
-      parent: controller,
-      curve: Curves.decelerate
-    );
+    // animation= CurvedAnimation(
+    //   parent: controller,
+    //   curve: Curves.decelerate
+    // );
+
+    animation = ColorTween(
+      begin: Colors.white10,
+      end: kBackgroundColor
+    ).animate(controller);
     controller.forward();
+
+    // animation.addStatusListener((status) {
+    //   if(status==AnimationStatus.completed){
+    //     controller.reverse(from: 1.0);
+    //   }else if(status== AnimationStatus.dismissed){
+    //     controller.forward();
+    //   }
+    // });
 
     controller.addListener(() {
       setState(() {
@@ -39,11 +52,17 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
     });
   }
 
+  @override
+  void dispose(){
+    controller.dispose();
+    super.dispose();
+  }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kBackgroundColor,
+      backgroundColor: animation.value,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
@@ -56,7 +75,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
                   tag: 'logo',
                   child: Container(
                     child: Image.asset('images/logo.png'),
-                    height: controller.value * 100,
+                    height: 60.0,
                   ),
                 ),
                 Text(
