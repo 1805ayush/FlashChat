@@ -21,8 +21,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   String password;
 
   @override
-  void initState() async{
+  void initState() {
     super.initState();
+    initializeApp();
+  }
+
+  Future<void> initializeApp() async {
     await Firebase.initializeApp();
   }
   @override

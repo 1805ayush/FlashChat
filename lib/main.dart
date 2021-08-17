@@ -10,7 +10,8 @@ import 'screens/registration_screen.dart';
 import 'screens/welcome_screen.dart';
 
 
-void main() async {
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(FlashChat());
 }
